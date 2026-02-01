@@ -1,41 +1,11 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+const CONTACT_EMAIL = "li13203140613@gmail.com";
+
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setMessage("Thank you! We'll deploy your Clawdbot within 24 hours and send login details to your email.");
-        setEmail("");
-      } else {
-        throw new Error("Failed to submit");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Something went wrong. Please try again.");
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       {/* Navigation */}
@@ -130,27 +100,21 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="h-12"
-                    disabled={status === "loading"}
-                  />
-                  <Button type="submit" className="w-full h-12 text-lg" disabled={status === "loading"}>
-                    {status === "loading" ? "Submitting..." : "Get Started - $99/month"}
-                  </Button>
-                </form>
-                {message && (
-                  <p className={`text-sm ${status === "success" ? "text-green-600" : "text-red-600"}`}>
-                    {message}
+                <div className="space-y-3">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}?subject=Clawdbot%20Deployment%20Request&body=Hi%2C%0A%0AI%20want%20to%20get%20Clawdbot%20deployed%20on%20my%20server.%0A%0APlease%20contact%20me%20with%20the%20next%20steps.%0A%0AThanks!`}
+                    className="block"
+                  >
+                    <Button className="w-full h-12 text-lg">
+                      Contact Us - $99/month
+                    </Button>
+                  </a>
+                  <p className="text-sm text-slate-500 text-center">
+                    Email: {CONTACT_EMAIL}
                   </p>
-                )}
+                </div>
                 <p className="text-sm text-slate-500 text-center">
-                  We&apos;ll contact you within 24 hours
+                  We&apos;ll respond within 24 hours
                 </p>
               </CardContent>
             </Card>
@@ -280,12 +244,13 @@ export default function Home() {
           <p className="text-slate-600 mb-8">
             Join hundreds of users who chose convenience over complexity.
           </p>
-          <Button
-            size="lg"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Clawdbot%20Deployment%20Request&body=Hi%2C%0A%0AI%20want%20to%20get%20Clawdbot%20deployed%20on%20my%20server.%0A%0APlease%20contact%20me%20with%20the%20next%20steps.%0A%0AThanks!`}
           >
-            Get Clawdbot - $99/month
-          </Button>
+            <Button size="lg">
+              Get Clawdbot - $99/month
+            </Button>
+          </a>
         </div>
       </section>
 
