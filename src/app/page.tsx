@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ContactButton } from "@/components/ui/contact-button";
 
 const CONTACT_EMAIL = "li13203140613@gmail.com";
 
@@ -101,14 +102,9 @@ export default function Home() {
                 </ul>
 
                 <div className="space-y-3">
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}?subject=Clawdbot%20Deployment%20Request&body=Hi%2C%0A%0AI%20want%20to%20get%20Clawdbot%20deployed%20on%20my%20server.%0A%0APlease%20contact%20me%20with%20the%20next%20steps.%0A%0AThanks!`}
-                    className="block"
-                  >
-                    <Button className="w-full h-12 text-lg">
-                      Contact Us - $99/month
-                    </Button>
-                  </a>
+                  <ContactButton email={CONTACT_EMAIL} className="w-full h-12 text-lg">
+                    Contact Us - $99/month
+                  </ContactButton>
                   <p className="text-sm text-slate-500 text-center">
                     Email: {CONTACT_EMAIL}
                   </p>
@@ -244,13 +240,9 @@ export default function Home() {
           <p className="text-slate-600 mb-8">
             Join hundreds of users who chose convenience over complexity.
           </p>
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Clawdbot%20Deployment%20Request&body=Hi%2C%0A%0AI%20want%20to%20get%20Clawdbot%20deployed%20on%20my%20server.%0A%0APlease%20contact%20me%20with%20the%20next%20steps.%0A%0AThanks!`}
-          >
-            <Button size="lg">
-              Get Clawdbot - $99/month
-            </Button>
-          </a>
+          <ContactButton email={CONTACT_EMAIL} size="lg">
+            Get Clawdbot - $99/month
+          </ContactButton>
         </div>
       </section>
 
