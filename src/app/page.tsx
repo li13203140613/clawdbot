@@ -25,7 +25,7 @@ export default function Home() {
 
       if (res.ok) {
         setStatus("success");
-        setMessage("Thank you! We will contact you within 48 hours.");
+        setMessage("Thank you! We'll deploy your Clawdbot within 24 hours and send login details to your email.");
         setEmail("");
       } else {
         throw new Error("Failed to submit");
@@ -46,7 +46,7 @@ export default function Home() {
           </Link>
           <div className="flex gap-6 text-sm">
             <Link href="/install" className="text-slate-600 hover:text-slate-900 transition">
-              Install
+              DIY Install
             </Link>
             <Link href="/github" className="text-slate-600 hover:text-slate-900 transition">
               GitHub
@@ -61,115 +61,178 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-4">
+          <Badge variant="secondary" className="mb-4 text-base px-4 py-1">
             clawdbot · clawbot · moltbot
           </Badge>
           <h1 className="text-5xl font-bold text-slate-900 mb-6 leading-tight">
-            Deploy <span className="text-blue-600">Clawdbot</span> to Your Cloud Server
+            Your Personal AI Assistant<br />
+            <span className="text-blue-600">That Actually Does Things</span>
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Professional clawdbot deployment service. We help you set up Claude AI chatbot
-            (clawbot, moltbot) on your own cloud server. Fast, secure, and fully managed.
+          <p className="text-xl text-slate-600 mb-4 max-w-2xl mx-auto">
+            <strong>Clawdbot</strong> is essentially a &quot;Claude with hands&quot; — an AI that doesn&apos;t just chat but actually does things.
           </p>
-
-          {/* Email Form */}
-          <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1"
-              disabled={status === "loading"}
-            />
-            <Button type="submit" disabled={status === "loading"}>
-              {status === "loading" ? "Submitting..." : "Get Started"}
-            </Button>
-          </form>
-          {message && (
-            <p className={`mt-3 text-sm ${status === "success" ? "text-green-600" : "text-red-600"}`}>
-              {message}
-            </p>
-          )}
-          <p className="text-sm text-slate-500 mt-3">
-            We respond within 48 hours
+          <p className="text-lg text-slate-500 mb-8 max-w-2xl mx-auto">
+            Connect WhatsApp, Telegram, Discord. Manage emails, calendars, smart home.
+            Execute commands, write code, automate tasks. With persistent memory.
           </p>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 px-4 bg-white">
+      {/* Two Options Section */}
+      <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
-            Why Choose Our Clawdbot Service?
+          <h2 className="text-3xl font-bold text-center text-slate-900 mb-4">
+            Choose Your Path
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <span className="text-2xl">☁️</span> Cloud Deployment
+          <p className="text-center text-slate-500 mb-12">
+            Get Clawdbot running on your own cloud server
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* PAID OPTION - Simple & Clean */}
+            <Card className="border-2 border-blue-500 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 text-sm font-medium">
+                RECOMMENDED
+              </div>
+              <CardHeader className="pt-8">
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  Done For You
                 </CardTitle>
-              </CardHeader>
-              <CardContent>
                 <CardDescription className="text-base">
-                  We deploy clawdbot directly to your cloud server. Full control,
-                  complete privacy. Compatible with AWS, Azure, GCP, and more.
+                  We handle everything. You just use it.
                 </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="text-4xl font-bold text-slate-900">
+                  $99<span className="text-lg font-normal text-slate-500">/month</span>
+                </div>
+
+                <ul className="space-y-3 text-slate-600">
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500 text-xl">✓</span>
+                    We deploy Clawdbot on your cloud server
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500 text-xl">✓</span>
+                    Ready within 24 hours
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500 text-xl">✓</span>
+                    Login credentials sent to your email
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500 text-xl">✓</span>
+                    Full technical support included
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500 text-xl">✓</span>
+                    Updates & maintenance handled
+                  </li>
+                </ul>
+
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-12"
+                    disabled={status === "loading"}
+                  />
+                  <Button type="submit" className="w-full h-12 text-lg" disabled={status === "loading"}>
+                    {status === "loading" ? "Submitting..." : "Get Started - $99/month"}
+                  </Button>
+                </form>
+                {message && (
+                  <p className={`text-sm ${status === "success" ? "text-green-600" : "text-red-600"}`}>
+                    {message}
+                  </p>
+                )}
+                <p className="text-sm text-slate-500 text-center">
+                  We&apos;ll contact you within 24 hours
+                </p>
               </CardContent>
             </Card>
 
-            <Card>
+            {/* FREE OPTION - Intentionally Scary */}
+            <Card className="border border-slate-200 bg-slate-50">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <span className="text-2xl">⚡</span> 48-Hour Setup
+                <CardTitle className="text-2xl flex items-center gap-2 text-slate-700">
+                  DIY Installation
+                  <Badge variant="outline" className="ml-2">Free</Badge>
                 </CardTitle>
-              </CardHeader>
-              <CardContent>
                 <CardDescription className="text-base">
-                  Quick turnaround time. Submit your email, we contact you within 48 hours,
-                  and your clawbot will be up and running shortly after payment.
+                  Install it yourself. Requires technical knowledge.
                 </CardDescription>
-              </CardContent>
-            </Card>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-sm text-slate-500 space-y-3 font-mono bg-slate-100 p-4 rounded-lg border">
+                  <p className="font-semibold text-slate-700">Prerequisites:</p>
+                  <ul className="space-y-1 text-xs">
+                    <li>• Node.js v18+ with npm package manager</li>
+                    <li>• Git CLI installed and configured</li>
+                    <li>• Understanding of MCP (Model Context Protocol)</li>
+                    <li>• SSH access to your VPS/cloud server</li>
+                    <li>• Basic knowledge of Linux terminal commands</li>
+                  </ul>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <span className="text-2xl">🔒</span> Secure & Private
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Your data stays on your server. No third-party access.
-                  Full ownership of your moltbot deployment.
-                </CardDescription>
+                  <p className="font-semibold text-slate-700 mt-4">Installation Steps:</p>
+                  <div className="text-xs space-y-2 text-slate-600">
+                    <p>1. Clone repository via <code className="bg-slate-200 px-1">git clone</code></p>
+                    <p>2. Run <code className="bg-slate-200 px-1">npm install --legacy-peer-deps</code></p>
+                    <p>3. Configure <code className="bg-slate-200 px-1">claude_desktop_config.json</code></p>
+                    <p>4. Set up MCP server with stdio transport</p>
+                    <p>5. Configure environment variables:</p>
+                    <p className="pl-4">- ANTHROPIC_API_KEY</p>
+                    <p className="pl-4">- DATABASE_URL (PostgreSQL)</p>
+                    <p className="pl-4">- REDIS_URL for session management</p>
+                    <p className="pl-4">- WEBHOOK_SECRET for integrations</p>
+                    <p>6. Initialize database with <code className="bg-slate-200 px-1">npx prisma migrate deploy</code></p>
+                    <p>7. Build production bundle: <code className="bg-slate-200 px-1">npm run build</code></p>
+                    <p>8. Configure systemd service for process management</p>
+                    <p>9. Set up Nginx reverse proxy with SSL</p>
+                    <p>10. Configure firewall rules (ufw/iptables)</p>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Link href="/install">
+                    <Button variant="outline" className="w-full">
+                      View Full Technical Guide
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-xs text-slate-400 text-center">
+                  Average setup time: 2-4 hours (for experienced developers)
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-16 px-4">
+      {/* What is Clawdbot */}
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
-            How It Works
+            What Can Clawdbot Do?
           </h2>
-          <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
-              { step: "1", title: "Submit Your Email", desc: "Fill in the form above with your email address" },
-              { step: "2", title: "We Contact You", desc: "Our team responds within 48 hours with deployment options" },
-              { step: "3", title: "Complete Payment", desc: "Choose your plan and complete the payment process" },
-              { step: "4", title: "Access Your Clawdbot", desc: "Receive login credentials and start using your clawdbot" },
-            ].map((item) => (
-              <div key={item.step} className="flex gap-6 items-start">
-                <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl shrink-0">
-                  {item.step}
-                </div>
+              { icon: "💬", title: "Connect Messaging Apps", desc: "WhatsApp, Telegram, Discord, WeChat — all in one AI assistant" },
+              { icon: "📧", title: "Manage Email & Calendar", desc: "Read, reply, schedule meetings automatically" },
+              { icon: "🏠", title: "Control Smart Home", desc: "Lights, thermostat, security — voice or text commands" },
+              { icon: "💻", title: "Execute Commands", desc: "Run terminal commands, write and debug code" },
+              { icon: "🧠", title: "Persistent Memory", desc: "Unlike ChatGPT, Clawdbot remembers everything" },
+              { icon: "🔒", title: "Self-Hosted & Private", desc: "Your data stays on YOUR server. Complete privacy." },
+            ].map((feature, i) => (
+              <div key={i} className="flex gap-4 p-4 rounded-lg hover:bg-slate-50 transition">
+                <span className="text-3xl">{feature.icon}</span>
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="text-slate-600">{item.desc}</p>
+                  <h3 className="font-semibold text-slate-900">{feature.title}</h3>
+                  <p className="text-slate-600 text-sm">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -177,21 +240,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Social Proof - Customer Questions */}
       <section className="py-16 px-4 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to Deploy Your Clawdbot?
+            Real Questions From Our Customers
           </h2>
-          <p className="text-slate-300 mb-8">
-            Join hundreds of users who have successfully deployed clawbot and moltbot on their servers.
+          <p className="text-slate-400 mb-12">
+            This is why people choose our &quot;Done For You&quot; service
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            {[
+              '"What is API?"',
+              '"Who is Claude?"',
+              '"What is a server?"',
+              '"Is npm a virus?"',
+              '"Who is root?"',
+              '"Just take my money!"',
+            ].map((quote, i) => (
+              <div key={i} className="bg-slate-800 p-4 rounded-lg">
+                <p className="text-slate-300 italic">{quote}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-12 text-xl text-slate-300">
+            If these questions sound familiar, the <strong>$99/month</strong> option is for you.
+          </p>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Ready for Your Own AI Assistant?
+          </h2>
+          <p className="text-slate-600 mb-8">
+            Join hundreds of users who chose convenience over complexity.
           </p>
           <Button
             size="lg"
-            variant="secondary"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            Get Started Now
+            Get Clawdbot - $99/month
           </Button>
         </div>
       </section>
@@ -202,13 +295,13 @@ export default function Home() {
           <p>&copy; 2025 Clawdbot. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
             <Link href="/install" className="hover:text-white transition">
-              Clawdbot Install
+              DIY Install
             </Link>
             <Link href="/github" className="hover:text-white transition">
               GitHub Clawdbot
             </Link>
             <Link href="/guide" className="hover:text-white transition">
-              Clawdbot Guide
+              User Guide
             </Link>
           </div>
         </div>
