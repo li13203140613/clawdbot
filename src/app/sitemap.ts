@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://clawdbot.com' // Update with your actual domain
+  const baseUrl = 'https://openclawdmp.com'
 
   return [
     {

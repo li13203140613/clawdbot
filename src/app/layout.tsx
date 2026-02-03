@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://openclawdmp.com'),
   title: {
     default: "Clawdbot - Deploy Claude AI Bot to Your Cloud Server | clawbot moltbot",
     template: "%s | Clawdbot"
